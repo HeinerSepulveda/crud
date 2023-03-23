@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Empleado</h5>
+                <h5 class="modal-title" id="updateModalLabel">Actualizar empleado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span wire:click.prevent="cancel()" aria-hidden="true">×</span>
                 </button>
@@ -31,9 +31,15 @@
                 <label for="telefono"></label>
                 <input wire:model="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono">@error('telefono') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="form-group">
-                <label for="foto"></label>
-                <input wire:model="foto" type="text" class="form-control" id="foto" placeholder="Foto">@error('foto') <span class="error text-danger">{{ $message }}</span> @enderror
+            <div>
+                <label for="foto">Foto actual</label>
+                @if ($foto)
+                    <img src="{{ asset('storage/'.$foto) }}" width="60px" height="40px">
+                @endif
+            </div>
+            <div>
+                <label for="foto">Cambiar foto</label><br>
+                <input wire:model="foto" type="file" id="foto" placeholder="Foto">@error('foto') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
 
                 </form>

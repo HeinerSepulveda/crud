@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use App\Models\Empleado;
 
 class Empleados extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $nombre, $apellidos, $documento, $direccion, $telefono, $foto;
@@ -47,13 +49,19 @@ class Empleados extends Component
 
     public function store()
     {
+        $path = '';
+
+        if($this->foto && $this->foto->isValid()){
+            $path = $this->foto->store('photos', 'public');
+        }
+
         $this->validate([
 		'nombre' => 'required',
 		'apellidos' => 'required',
 		'documento' => 'required',
 		'direccion' => 'required',
 		'telefono' => 'required',
-		'foto' => 'required',
+		'foto' => 'nullable|image|max:1024',
         ]);
 
         Empleado::create([ 
@@ -62,12 +70,12 @@ class Empleados extends Component
 			'documento' => $this-> documento,
 			'direccion' => $this-> direccion,
 			'telefono' => $this-> telefono,
-			'foto' => $this-> foto
+			'foto' => $path
         ]);
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Empleado Successfully created.');
+		session()->flash('message', 'Empleado creado con éxito.');
     }
 
     public function edit($id)
@@ -109,7 +117,7 @@ class Empleados extends Component
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Empleado Successfully updated.');
+			session()->flash('message', 'Empleado actualizado con éxito.');
         }
     }
 

@@ -6,7 +6,7 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
+							<h4><i class="text-center fa fa-users"></i>
 								Listado de empleados </h4>
 						</div>
 						
@@ -48,7 +48,11 @@
 								<td>{{ $row->documento }}</td>
 								<td>{{ $row->direccion }}</td>
 								<td>{{ $row->telefono }}</td>
-								<td>{{ $row->foto }}</td>
+								@if ($row->foto != '')
+									<td> <img src="{{ asset('storage/'.$row->foto) }}" width="30px" height="30px"></td>
+								@else
+									<td>Sin foto</td>
+								@endif
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
