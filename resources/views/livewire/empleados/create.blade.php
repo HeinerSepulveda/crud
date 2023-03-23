@@ -10,27 +10,27 @@
             </div>
            <div class="modal-body">
 				<form>
-            <div class="form-group">
-                <label for="nombre"></label>
+            <div>
+                <label for="nombre" tyle="margin-bottom: 0;"></label>
                 <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="form-group">
-                <label for="apellidos"></label>
+            <div>
+                <label for="apellidos" tyle="margin-bottom: 0;"></label>
                 <input wire:model="apellidos" type="text" class="form-control" id="apellidos" placeholder="Apellidos">@error('apellidos') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="form-group">
-                <label for="documento"></label>
+            <div>
+                <label for="documento" tyle="margin-bottom: 0;"></label>
                 <input wire:model="documento" type="text" class="form-control" id="documento" placeholder="Documento">@error('documento') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="form-group">
-                <label for="direccion"></label>
+            <div>
+                <label for="direccion" tyle="margin-bottom: 0;"></label>
                 <input wire:model="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion">@error('direccion') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
-                <label for="telefono"></label>
+                <label for="telefono" tyle="margin-bottom: 0;"></label>
                 <input wire:model="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono">@error('telefono') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="form-group">
+            <div>
                 <label for="foto">Cargar foto</label><br>
                 <input wire:model="foto" type="file" id="foto" placeholder="Foto">@error('foto') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
